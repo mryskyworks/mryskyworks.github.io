@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MryskyWorks（ミリスカイワークス） | IT活用・ビジネスサポート</title>
+  <meta name="description" content="MryskyWorks（ミリスカイワークス）は、「ミリ単位の緻密さ」と「空のような広がり」を掛け合わせ、IT活用から日々の業務サポートまで幅広く支えるビジネスパートナーです。">
+  <style>
+    :root {
+      --primary: #0f294a;     /* 誠実・ITの信頼感（ネイビー） */
+      --accent: #0088cc;      /* 空の広がり（スカイブルー） */
+      --accent-light: #e6f4fa;
+      --text-main: #222222;
+      --text-sub: #555555;
+      --bg-base: #ffffff;
+      --bg-gray: #f7f9fc;
+      --border: #e1e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-base);
+      line-height: 1.75;
+      letter-spacing: 0.03em;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ヘッダー */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(6px);
+    }
+
+    .header-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--primary);
+    }
+
+    .logo-area:hover {
+      text-decoration: none;
+    }
+
+    .logo-text-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-en {
+      font-size: 1.35rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    .logo-en span {
+      color: var(--accent);
+    }
+
+    .logo-ja {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-sub);
+      margin-top: 2px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    nav a {
+      color: var(--primary);
+    }
+
+    /* ヒーローセクション（ミリ単位のグリッド背景×空のグラデーション） */
+    .hero {
+      background-color: var(--bg-gray);
+      background-image: 
+        linear-gradient(to right, rgba(0, 136, 204, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 136, 204, 0.06) 1px, transparent 1px);
+      background-size: 20px 20px;
+      padding: 80px 24px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.1rem;
+      color: var(--primary);
+      line-height: 1.4;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-sub);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* 共通セクションスタイル */
+    section {
+      padding: 72px 24px;
+    }
+
+    section:nth-of-type(even) {
+      background-color: var(--bg-gray);
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+
+    .section-title span {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 4px;
+    }
+
+    .section-title h2 {
+      font-size: 1.65rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* About（屋号の由来） */
+    .about-box {
+      background: var(--bg-base);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 32px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    }
+
+    .about-box p + p {
+      margin-top: 16px;
+    }
+
+    /* Services（事業内容） */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--bg-base);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px;
+      transition: transform 0.2s ease;
+    }
+
+    .service-card h3 {
+      font-size: 1.15rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .service-card h3::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .service-card p {
+      font-size: 0.92rem;
+      color: var(--text-sub);
+    }
+
+    /* Overview（事業者情報） */
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--bg-base);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .info-table th,
+    .info-table td {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    .info-table tr:last-child th,
+    .info-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .info-table th {
+      width: 30%;
+      background-color: #f2f6fa;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* Contact（お問い合わせ） */
+    .contact-box {
+      text-align: center;
+      background: var(--bg-base);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 40px 24px;
+    }
+
+    .contact-box p {
+      margin-bottom: 24px;
+      color: var(--text-sub);
+    }
+
+    .btn-contact {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #ffffff;
+      font-weight: 700;
+      padding: 14px 36px;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn-contact:hover {
+      opacity: 0.9;
+      text-decoration: none;
+    }
+
+    /* フッター */
+    footer {
+      background: var(--primary);
+      color: #ffffff;
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 0.85rem;
+    }
+
+    /* スマホ対応 */
+    @media (max-width: 640px) {
+      nav {
+        display: none;
+      }
+      .hero {
+        padding: 56px 20px;
+      }
+      .hero h1 {
+        font-size: 1.55rem;
+      }
+      .info-table th,
+      .info-table td {
+        display: block;
+        width: 100%;
+        padding: 12px 18px;
+      }
+      .info-table th {
+        border-bottom: none;
+        padding-bottom: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header>
+    <div class="header-inner">
+      <a href="#" class="logo-area">
+        <!-- SVGシンボルマーク（M×W＋目盛り＋空のライン） -->
+        <svg width="40" height="40" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="56" height="56" rx="10" fill="#F0F7FC" stroke="#0F294A" stroke-width="2"/>
+          <!-- ミリ単位を表す目盛り -->
+          <line x1="12" y1="14" x2="12" y2="50" stroke="#0088CC" stroke-width="1.5" stroke-dasharray="2 3"/>
+          <!-- MとWを組み合わせた幾何学ライン -->
+          <path d="M16 44V20L26 34L36 20V38" stroke="#0F294A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- 空へ広がるライン -->
+          <path d="M28 36L36 46L44 34L52 46" stroke="#0088CC" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="logo-text-group">
+          <span class="logo-en">Mrysky<span>Works</span></span>
+          <span class="logo-ja">ミリスカイワークス</span>
+        </div>
+      </a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#overview">Overview</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- メインビジュアル -->
+  <div class="hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Precision in every millimeter, freedom like the sky.</span>
+      <h1>ミリ単位の緻密さと、<br>空のような広がりでビジネスを支える。</h1>
+      <p>IT活用・システム構築から日々の業務効率化・実務サポートまで。<br>枠にとらわれない柔軟な対応で、お客様の「働く」を多角的に支援します。</p>
+    </div>
+  </div>
+
+  <!-- 屋号の由来・コンセプト -->
+  <section id="about">
+    <div class="container">
+      <div class="section-title">
+        <span>About</span>
+        <h2>MryskyWorksについて</h2>
+      </div>
+      <div class="about-box">
+        <p>「Mrysky」には、<strong>「ミリ単位の緻密さ」</strong>と<strong>「空のような広がり」</strong>という2つの想いを込めています。</p>
+        <p>細部まで手を抜かない丁寧な実務サポートと、特定の専門領域に閉じこもらない柔軟なIT活用。この2つを掛け合わせ、お客様の事業や日々の業務（Works）を縁の下から支えるパートナーでありたいと考えています。</p>
+        <p>「ちょっとしたITの困りごとを相談したい」「業務の仕組み化を手伝ってほしい」といったご相談から、Web・システム関連の開発・検証まで、状況に合わせて柔軟に対応いたします。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 事業内容 -->
+  <section id="services">
+    <div class="container">
+      <div class="section-title">
+        <span>Services</span>
+        <h2>事業内容</h2>
+      </div>
+      <div class="service-grid">
+        <div class="service-card">
+          <h3>IT・Web制作および開発支援</h3>
+          <p>Webサイトの構築・運用保守、業務システムの設計・開発、品質検証（テスト自動化等）など、目的に合わせた技術支援を行います。</p>
+        </div>
+        <div class="service-card">
+          <h3>業務効率化・ITツール導入支援</h3>
+          <p>クラウドサービスの選定・初期設定、日常業務の自動化・デジタル化など、現場の負担を減らす仕組みづくりをサポートします。</p>
+        </div>
+        <div class="service-card">
+          <h3>ビジネス・実務サポート全般</h3>
+          <p>資料作成、データ整理、リサーチ業務、各種事務代行など、IT領域に限らず「手が回らない業務」を幅広くお手伝いします。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 事業者情報 -->
+  <section id="overview">
+    <div class="container">
+      <div class="section-title">
+        <span>Overview</span>
+        <h2>事業者概要</h2>
+      </div>
+      <table class="info-table">
+        <tr>
+          <th>屋号</th>
+          <td>MryskyWorks（ミリスカイワークス）</td>
+        </tr>
+        <tr>
+          <th>代表</th>
+          <td>森山陽介</td>
+        </tr>
+        <tr>
+          <th>所在地</th>
+          <td>東京都</td>
+        </tr>
+        <tr>
+          <th>事業内容</th>
+          <td>IT関連の企画・開発・運用保守、ITツール導入支援、業務効率化および各種ビジネスサポート全般</td>
+        </tr>
+        <tr>
+          <th>連絡先</th>
+          <td>info@mrysky.jp</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- お問い合わせ -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <span>Contact</span>
+        <h2>お問い合わせ</h2>
+      </div>
+      <div class="contact-box">
+        <p>業務のご相談・お見積もり・お問い合わせは、下記メールアドレスよりお気軽にご連絡ください。</p>
+        <a href="mailto:info@mrysky.jp" class="btn-contact">メールでお問い合わせする</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer>
+    <p>&copy; MryskyWorks. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
